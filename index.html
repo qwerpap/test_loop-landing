@@ -45,7 +45,9 @@
         <a href="#proof">Proof</a>
         <a href="#reputation">Репутация</a>
         <a href="#plans">Планы</a>
-        <a href="#data">Данные</a>
+        <a href="#faq">FAQ</a>
+        <a href="./privacy.html">Политика</a>
+        <a href="./terms.html">Условия</a>
       </nav>
     </header>
 
@@ -78,39 +80,104 @@
             статусами на каждом шаге.
           </p>
         </div>
-        <div class="timeline">
-          <article class="timeline__item">
-            <span class="timeline__index">01</span>
+        <div class="flow-grid">
+          <article class="flow-card flow-card--1">
+            <span class="flow-card__step">01</span>
+            <img
+              class="flow-card__icon"
+              src="./assets/flow-request.svg"
+              alt="Request Exchange"
+            />
             <h3>Request Exchange</h3>
             <p>
               User A выбирает приложение User B в маркете и отправляет заявку.
               Создается exchange со статусом <code>pending</code>.
             </p>
           </article>
-          <article class="timeline__item">
-            <span class="timeline__index">02</span>
+          <article class="flow-card flow-card--2">
+            <span class="flow-card__step">02</span>
+            <img
+              class="flow-card__icon"
+              src="./assets/flow-incoming.svg"
+              alt="Incoming Request"
+            />
             <h3>Incoming Request</h3>
             <p>
               User B получает входящий invite в Home и решает: принять или
               отклонить.
             </p>
           </article>
-          <article class="timeline__item">
-            <span class="timeline__index">03</span>
+          <article class="flow-card flow-card--3">
+            <span class="flow-card__step">03</span>
+            <img
+              class="flow-card__icon"
+              src="./assets/flow-accept.svg"
+              alt="Accept and start"
+            />
             <h3>Accept & Start</h3>
             <p>
               При принятии exchange становится <code>active</code>, выставляются
               <code>startDate</code> и <code>endDate = +14 days</code>.
             </p>
           </article>
-          <article class="timeline__item">
-            <span class="timeline__index">04</span>
+          <article class="flow-card flow-card--4">
+            <span class="flow-card__step">04</span>
+            <img
+              class="flow-card__icon"
+              src="./assets/flow-daily.svg"
+              alt="Daily execution"
+            />
             <h3>Daily Execution</h3>
             <p>
               В течение 14 дней обе стороны проходят daily proof-ритуал:
               загружают подтверждения, проверяют партнера, закрывают дни.
             </p>
           </article>
+          <svg
+            class="flow-connector flow-connector--h"
+            viewBox="0 0 220 64"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="flowLineA" x1="0" y1="32" x2="220" y2="32">
+                <stop offset="0" stop-color="#F0CF8A" stop-opacity="0.25" />
+                <stop offset="0.5" stop-color="#D4A853" stop-opacity="0.95" />
+                <stop offset="1" stop-color="#F0CF8A" stop-opacity="0.25" />
+              </linearGradient>
+            </defs>
+            <path d="M12 32 H192" stroke="url(#flowLineA)" stroke-width="3" />
+            <path d="M188 24 L206 32 L188 40" fill="none" stroke="url(#flowLineA)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg
+            class="flow-connector flow-connector--v"
+            viewBox="0 0 80 180"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="flowLineB" x1="40" y1="0" x2="40" y2="180">
+                <stop offset="0" stop-color="#F0CF8A" stop-opacity="0.25" />
+                <stop offset="0.5" stop-color="#D4A853" stop-opacity="0.95" />
+                <stop offset="1" stop-color="#F0CF8A" stop-opacity="0.25" />
+              </linearGradient>
+            </defs>
+            <path d="M40 12 C40 56, 40 124, 40 162" fill="none" stroke="url(#flowLineB)" stroke-width="3" />
+            <path d="M32 154 L40 168 L48 154" fill="none" stroke="url(#flowLineB)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <svg
+            class="flow-connector flow-connector--h2"
+            viewBox="0 0 220 64"
+            aria-hidden="true"
+          >
+            <defs>
+              <linearGradient id="flowLineC" x1="0" y1="32" x2="220" y2="32">
+                <stop offset="0" stop-color="#F0CF8A" stop-opacity="0.25" />
+                <stop offset="0.5" stop-color="#D4A853" stop-opacity="0.95" />
+                <stop offset="1" stop-color="#F0CF8A" stop-opacity="0.25" />
+              </linearGradient>
+            </defs>
+            <path d="M12 32 H192" stroke="url(#flowLineC)" stroke-width="3" />
+            <path d="M188 24 L206 32 L188 40" fill="none" stroke="url(#flowLineC)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
       </section>
 
@@ -204,87 +271,71 @@
         </div>
       </section>
 
-      <section class="container section reveal" id="data">
-        <div class="section-head">
-          <h2>Структура данных</h2>
-          <p>
-            Firebase-модель разбита на ключевые коллекции:
-            <code>users</code>, <code>apps</code>, <code>exchanges</code>,
-            <code>proofs</code>.
-          </p>
-        </div>
-        <div class="grid grid--2">
-          <article class="code-card">
-            <p class="code-card__title">User Model</p>
-            <pre><code>{
-  "id": "uid",
-  "email": "...",
-  "name": "...",
-  "photoUrl": "...",
-  "reputation": 4.8,
-  "completedExchanges": 12,
-  "failedExchanges": 1,
-  "activeAppsCount": 1,
-  "plan": "free | pro | unlimited"
-}</code></pre>
-          </article>
-          <article class="code-card">
-            <p class="code-card__title">Exchange Model</p>
-            <pre><code>{
-  "id": "exchange_id",
-  "initiatorId": "userA",
-  "receiverId": "userB",
-  "appA": "app_id_A",
-  "appB": "app_id_B",
-  "status": "pending | active | completed | failed",
-  "startDate": "timestamp",
-  "endDate": "timestamp"
-}</code></pre>
-          </article>
-        </div>
-      </section>
-
       <section class="container section reveal" id="faq">
         <div class="section-head">
           <h2>FAQ</h2>
           <p>Короткие ответы на самые частые вопросы по процессу обменов.</p>
         </div>
         <div class="faq">
-          <details>
-            <summary>Что происходит, если proof отклонен?</summary>
-            <p>
+          <article class="faq-item">
+            <button class="faq-item__q" type="button">
+              <span>Что происходит, если proof отклонен?</span>
+              <span class="faq-item__plus">+</span>
+            </button>
+            <div class="faq-item__a">
+              <p>
               Статус proof становится <code>rejected</code>. Пользователь
               получает фидбек и пересдает proof за этот же день.
-            </p>
-          </details>
-          <details>
-            <summary>Можно ли отправить proof без фото?</summary>
-            <p>
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-item__q" type="button">
+              <span>Можно ли отправить proof без фото?</span>
+              <span class="faq-item__plus">+</span>
+            </button>
+            <div class="faq-item__a">
+              <p>
               Нет. В системе есть анти-чит правила: без фото отправка
               блокируется.
-            </p>
-          </details>
-          <details>
-            <summary>Когда exchange считается завершенным?</summary>
-            <p>
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-item__q" type="button">
+              <span>Когда exchange считается завершенным?</span>
+              <span class="faq-item__plus">+</span>
+            </button>
+            <div class="faq-item__a">
+              <p>
               Когда все 14 дней подтверждены обеими сторонами:
               <code>exchange = completed</code>.
-            </p>
-          </details>
-          <details>
-            <summary>Что дает репутация?</summary>
-            <p>
+              </p>
+            </div>
+          </article>
+          <article class="faq-item">
+            <button class="faq-item__q" type="button">
+              <span>Что дает репутация?</span>
+              <span class="faq-item__plus">+</span>
+            </button>
+            <div class="faq-item__a">
+              <p>
               Репутация влияет на доверие в системе и на вероятность получать
               новые обмены.
-            </p>
-          </details>
+              </p>
+            </div>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="footer container">
       <p>Test Loop · Trust-based QA Exchange</p>
-      <a href="#top">Наверх ↑</a>
+      <div class="footer__links">
+        <a href="./privacy.html">Политика конфиденциальности</a>
+        <a href="./terms.html">Условия использования</a>
+        <a href="#top">Наверх ↑</a>
+      </div>
     </footer>
 
     <script src="./assets/app.js"></script>

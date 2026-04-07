@@ -63,11 +63,70 @@ h1 { margin: 10px 0 16px; font-size: clamp(34px, 5vw, 60px); line-height: 1.03; 
 .hero__stats span { color: var(--muted); font-size: 13px; }
 .section-head h2 { margin: 0 0 10px; font-size: clamp(26px, 3.4vw, 40px); letter-spacing: -0.02em; }
 .section-head p { margin: 0; color: var(--muted); max-width: 760px; line-height: 1.7; }
-.timeline { margin-top: 24px; display: grid; gap: 14px; }
-.timeline__item { border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; background: linear-gradient(140deg, rgba(255, 255, 255, 0.04), transparent); }
-.timeline__item h3 { margin: 0 0 8px; }
-.timeline__item p { margin: 0; color: var(--muted); line-height: 1.6; }
-.timeline__index { display: inline-block; margin-bottom: 8px; font-size: 12px; color: var(--gold-soft); letter-spacing: 0.14em; font-weight: 700; }
+.flow-grid {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  position: relative;
+}
+.flow-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+  background: linear-gradient(140deg, rgba(255, 255, 255, 0.05), transparent);
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.22);
+  transition: transform 220ms ease, border-color 220ms ease, box-shadow 220ms ease;
+}
+.flow-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(212, 168, 83, 0.35);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, 0.3);
+}
+.flow-card h3 { margin: 0 0 8px; }
+.flow-card p { margin: 0; color: var(--muted); line-height: 1.6; }
+.flow-card__step {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  height: 26px;
+  padding: 0 8px;
+  border-radius: 999px;
+  background: rgba(212, 168, 83, 0.14);
+  border: 1px solid rgba(212, 168, 83, 0.35);
+  color: var(--gold-soft);
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+.flow-card__icon {
+  display: block;
+  width: 44px;
+  height: 44px;
+  margin: 0 0 10px;
+}
+.flow-connector {
+  position: absolute;
+  pointer-events: none;
+  filter: drop-shadow(0 0 8px rgba(212, 168, 83, 0.28));
+  opacity: 0.92;
+}
+.flow-connector path {
+  stroke-dasharray: 10 10;
+  animation: flowPulse 1.9s linear infinite;
+}
+.flow-connector path:last-child {
+  animation: none;
+}
+.flow-connector--h { width: 112px; left: calc(50% - 56px); top: 23%; }
+.flow-connector--v { width: 34px; left: calc(50% - 17px); top: 48%; }
+.flow-connector--h2 { width: 112px; left: calc(50% - 56px); top: 74%; }
+@keyframes flowPulse {
+  from { stroke-dashoffset: 40; opacity: 0.6; }
+  50% { opacity: 1; }
+  to { stroke-dashoffset: 0; opacity: 0.6; }
+}
 .grid { margin-top: 24px; display: grid; gap: 14px; }
 .grid--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .grid--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -84,19 +143,107 @@ h1 { margin: 10px 0 16px; font-size: clamp(34px, 5vw, 60px); line-height: 1.03; 
 .price-card__price { margin: 0; font-size: 28px; font-weight: 800; }
 .price-card__desc { margin: 8px 0 0; color: var(--muted); }
 .price-card--featured { border-color: rgba(212, 168, 83, 0.4); background: linear-gradient(145deg, rgba(212, 168, 83, 0.16), transparent); }
-.faq { margin-top: 22px; display: grid; gap: 10px; }
-.faq details { border: 1px solid var(--line); border-radius: 14px; background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent); padding: 14px 16px; }
-.faq summary { cursor: pointer; font-weight: 700; }
-.faq p { margin: 10px 0 0; color: var(--muted); line-height: 1.65; }
+.faq { margin-top: 22px; display: grid; gap: 12px; }
+.faq-item {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent);
+  overflow: hidden;
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+}
+.faq-item:hover {
+  border-color: rgba(212, 168, 83, 0.24);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.2);
+}
+.faq-item__q {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  text-align: left;
+}
+.faq-item__q:hover { background: rgba(255, 255, 255, 0.02); }
+.faq-item__plus {
+  color: var(--gold-soft);
+  transition: transform 240ms ease;
+}
+.faq-item.is-open .faq-item__plus { transform: rotate(45deg); }
+.faq-item__a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 360ms ease, opacity 280ms ease, padding 280ms ease;
+  opacity: 0;
+  padding: 0 16px;
+}
+.faq-item.is-open .faq-item__a {
+  opacity: 1;
+  padding: 0 16px 16px;
+}
+.faq-item__a p { margin: 0; color: var(--muted); line-height: 1.65; }
 .footer {
   position: relative; z-index: 2; margin-top: 70px; margin-bottom: 34px; padding-top: 20px;
   border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 12px;
 }
 .footer p { margin: 0; color: var(--muted); }
 .footer a { color: var(--gold-soft); text-decoration: none; }
+.footer__links { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
+
+.legal-hero {
+  padding-top: 56px;
+}
+
+.legal-hero h1 {
+  margin-bottom: 8px;
+}
+
+.legal-meta {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.legal-wrap {
+  margin-top: 22px;
+  display: grid;
+  gap: 14px;
+}
+
+.legal-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 18px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.04), transparent);
+}
+
+.legal-card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+}
+
+.legal-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.72;
+}
+
+.legal-card + .legal-card {
+  margin-top: 0;
+}
+
+.legal-nav-back {
+  margin-top: 18px;
+}
 @media (max-width: 1024px) {
   .hero__stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid--3 { grid-template-columns: 1fr; }
+  .flow-connector { display: none; }
 }
 @media (max-width: 800px) {
   .topbar { padding: 10px 12px; }
@@ -106,5 +253,6 @@ h1 { margin: 10px 0 16px; font-size: clamp(34px, 5vw, 60px); line-height: 1.03; 
     border: 1px solid var(--line); border-radius: 12px; background: rgba(10, 12, 18, 0.96); flex-direction: column; gap: 8px;
   }
   .topnav.is-open { display: flex; }
-  .grid--2, .pricing { grid-template-columns: 1fr; }
+  .grid--2, .pricing, .flow-grid { grid-template-columns: 1fr; }
+  .flow-card { padding: 16px; }
 }
