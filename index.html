@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Test Loop - Как это работает</title>
+    <meta
+      name="description"
+      content="Подробный лендинг по процессам Test Loop: обмены, 14-дневный цикл, proof-система, репутация и монетизация."
+    />
+    <meta property="og:title" content="Test Loop - Как это работает" />
+    <meta
+      property="og:description"
+      content="P2P exchange + reputation system: полный процесс обмена, proof и репутации."
+    />
+    <meta
+      property="og:image"
+      content="https://YOUR_USERNAME.github.io/YOUR_REPO/assets/og-image.svg"
+    />
+    <meta property="og:type" content="website" />
+    <meta name="theme-color" content="#0b0d14" />
+    <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <div class="bg-glow bg-glow--1"></div>
+    <div class="bg-glow bg-glow--2"></div>
+
+    <header class="topbar container">
+      <a class="brand" href="#top">
+        <span class="brand__dot"></span>
+        <span>Test Loop</span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-label="Открыть меню">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="topnav" id="topNav">
+        <a href="#flow">Flow</a>
+        <a href="#proof">Proof</a>
+        <a href="#reputation">Репутация</a>
+        <a href="#plans">Планы</a>
+        <a href="#data">Данные</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero container section">
+        <p class="kicker">P2P exchange + reputation system</p>
+        <h1>Как работает Test Loop</h1>
+        <p class="hero__lead">
+          Это не маркетплейс кредитов. Это система взаимного тестирования:
+          разработчики обмениваются тестами приложений, подтверждают качество
+          через daily proof и строят репутацию.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--gold" href="#flow">Посмотреть полный процесс</a>
+          <a class="btn btn--ghost" href="#plans">Премиум-планы</a>
+        </div>
+        <div class="hero__stats">
+          <article><strong>14</strong><span>дней в цикле</span></article>
+          <article><strong>3</strong><span>фото в proof (макс.)</span></article>
+          <article><strong>2</strong><span>модели монетизации</span></article>
+          <article><strong>100%</strong><span>trust-first подход</span></article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="flow">
+        <div class="section-head">
+          <h2>Главный Flow обмена</h2>
+          <p>
+            От запроса до подтверждения - прозрачный пайплайн с понятными
+            статусами на каждом шаге.
+          </p>
+        </div>
+        <div class="timeline">
+          <article class="timeline__item">
+            <span class="timeline__index">01</span>
+            <h3>Request Exchange</h3>
+            <p>
+              User A выбирает приложение User B в маркете и отправляет заявку.
+              Создается exchange со статусом <code>pending</code>.
+            </p>
+          </article>
+          <article class="timeline__item">
+            <span class="timeline__index">02</span>
+            <h3>Incoming Request</h3>
+            <p>
+              User B получает входящий invite в Home и решает: принять или
+              отклонить.
+            </p>
+          </article>
+          <article class="timeline__item">
+            <span class="timeline__index">03</span>
+            <h3>Accept & Start</h3>
+            <p>
+              При принятии exchange становится <code>active</code>, выставляются
+              <code>startDate</code> и <code>endDate = +14 days</code>.
+            </p>
+          </article>
+          <article class="timeline__item">
+            <span class="timeline__index">04</span>
+            <h3>Daily Execution</h3>
+            <p>
+              В течение 14 дней обе стороны проходят daily proof-ритуал:
+              загружают подтверждения, проверяют партнера, закрывают дни.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="proof">
+        <div class="section-head">
+          <h2>Proof-система (ядро доверия)</h2>
+          <p>
+            Каждый день пользователь отправляет proof, а другая сторона
+            подтверждает качество выполнения.
+          </p>
+        </div>
+        <div class="grid grid--2">
+          <article class="card">
+            <h3>Flow отправки proof</h3>
+            <ul class="list">
+              <li>Открыть приложение партнера</li>
+              <li>Сделать скриншоты</li>
+              <li>Загрузить до 3 фото</li>
+              <li>Отправить на проверку</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Flow проверки</h3>
+            <ul class="list">
+              <li>Партнер получает уведомление</li>
+              <li>Смотрит фото и день</li>
+              <li>Жмет Approve или Reject</li>
+              <li>При Reject пользователь пересдает</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="reputation">
+        <div class="section-head">
+          <h2>Анти-чит и репутация</h2>
+          <p>
+            Экономика продукта строится на trust-score: дисциплинированные
+            пользователи получают больше обменов и выше приоритет.
+          </p>
+        </div>
+        <div class="grid grid--3">
+          <article class="card card--accent">
+            <h3>Ограничения</h3>
+            <ul class="list">
+              <li>Максимум 3 фото в proof</li>
+              <li>Нельзя отправить proof без фото</li>
+              <li>Нельзя спамить отправкой без ответа</li>
+            </ul>
+          </article>
+          <article class="card">
+            <h3>Success path</h3>
+            <p>
+              Все 14 дней approved -> <code>exchange = completed</code>,
+              увеличиваются completedExchanges и растет репутация.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Failure path</h3>
+            <p>
+              Пропуски и невыполнение обязательств -> <code>exchange = failed</code>,
+              репутация снижается, доверие в системе падает.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="plans">
+        <div class="section-head">
+          <h2>Монетизация и планы</h2>
+          <p>Free + 2 премиум-модели под разные сценарии разработчиков.</p>
+        </div>
+        <div class="pricing">
+          <article class="price-card">
+            <p class="price-card__badge">FREE</p>
+            <h3>Базовый</h3>
+            <p class="price-card__desc">1 активный слот приложения</p>
+          </article>
+          <article class="price-card price-card--featured">
+            <p class="price-card__badge">ONE-TIME</p>
+            <h3>Extra Slot</h3>
+            <p class="price-card__price">499 ₽</p>
+            <p class="price-card__desc">+1 активное приложение, разово</p>
+          </article>
+          <article class="price-card">
+            <p class="price-card__badge">SUBSCRIPTION</p>
+            <h3>Unlimited</h3>
+            <p class="price-card__price">990 ₽ / мес</p>
+            <p class="price-card__desc">Безлимит слотов + приоритет</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="data">
+        <div class="section-head">
+          <h2>Структура данных</h2>
+          <p>
+            Firebase-модель разбита на ключевые коллекции:
+            <code>users</code>, <code>apps</code>, <code>exchanges</code>,
+            <code>proofs</code>.
+          </p>
+        </div>
+        <div class="grid grid--2">
+          <article class="code-card">
+            <p class="code-card__title">User Model</p>
+            <pre><code>{
+  "id": "uid",
+  "email": "...",
+  "name": "...",
+  "photoUrl": "...",
+  "reputation": 4.8,
+  "completedExchanges": 12,
+  "failedExchanges": 1,
+  "activeAppsCount": 1,
+  "plan": "free | pro | unlimited"
+}</code></pre>
+          </article>
+          <article class="code-card">
+            <p class="code-card__title">Exchange Model</p>
+            <pre><code>{
+  "id": "exchange_id",
+  "initiatorId": "userA",
+  "receiverId": "userB",
+  "appA": "app_id_A",
+  "appB": "app_id_B",
+  "status": "pending | active | completed | failed",
+  "startDate": "timestamp",
+  "endDate": "timestamp"
+}</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="container section reveal" id="faq">
+        <div class="section-head">
+          <h2>FAQ</h2>
+          <p>Короткие ответы на самые частые вопросы по процессу обменов.</p>
+        </div>
+        <div class="faq">
+          <details>
+            <summary>Что происходит, если proof отклонен?</summary>
+            <p>
+              Статус proof становится <code>rejected</code>. Пользователь
+              получает фидбек и пересдает proof за этот же день.
+            </p>
+          </details>
+          <details>
+            <summary>Можно ли отправить proof без фото?</summary>
+            <p>
+              Нет. В системе есть анти-чит правила: без фото отправка
+              блокируется.
+            </p>
+          </details>
+          <details>
+            <summary>Когда exchange считается завершенным?</summary>
+            <p>
+              Когда все 14 дней подтверждены обеими сторонами:
+              <code>exchange = completed</code>.
+            </p>
+          </details>
+          <details>
+            <summary>Что дает репутация?</summary>
+            <p>
+              Репутация влияет на доверие в системе и на вероятность получать
+              новые обмены.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer container">
+      <p>Test Loop · Trust-based QA Exchange</p>
+      <a href="#top">Наверх ↑</a>
+    </footer>
+
+    <script src="./assets/app.js"></script>
+  </body>
+</html>
